@@ -12,39 +12,35 @@ const EASE = [0.22, 1, 0.36, 1];
 */
 const PLANS = {
   starter: {
-    name: "Starter",
-    blurb: "For solo builders shipping their first model.",
-    monthly: 29,
-    annual: 23,
-    cta: "Start building",
+    name: "Licencia Estándar",
+    blurb: "Para proyectos personales o pruebas locales.",
+    monthly: 990,
+    annual: 990,
+    cta: "Próximamente",
     features: [
-      "3 active projects",
-      "1M tokens included each month",
-      "Shared inference queue",
-      "REST API and TypeScript SDK",
-      "Community support",
+      "1 solo proyecto",
+      "Componentes básicos",
+      "Soporte de la comunidad",
     ],
   },
   scale: {
-    name: "Scale",
-    blurb: "For teams running models in production.",
-    monthly: 99,
-    annual: 79,
-    cta: "Scale with us",
+    name: "FluidReact-Core",
+    blurb: "Librería completa de componentes para producción.",
+    monthly: 1990,
+    annual: 1990,
+    cta: "Comprar ahora",
     features: [
-      "Unlimited projects",
-      "25M tokens included each month",
-      "Priority inference queue",
-      "Fine tuning and evals",
-      "Up to 10 team seats",
-      "Support replies within 4 hours",
+      "Proyectos ilimitados",
+      "Todos los componentes UI",
+      "Código fuente en React/Next.js",
+      "Actualizaciones de por vida",
+      "Integración fácil con Tailwind",
     ],
   },
 };
 
 const BILLING = [
-  { annual: false, label: "Monthly" },
-  { annual: true, label: "Annual", note: "Save 20%" },
+  { annual: true, label: "Pago Único", note: "Acceso de por vida" },
 ];
 
 /* Background glows: transform-only drift, static when reduced motion is on. */
@@ -150,27 +146,38 @@ function FeatureList({ items, tone }) {
   );
 }
 
-function PlanPrice({ plan, annual, reduce, large }) {
-  const price = annual ? plan.annual : plan.monthly;
-  const yearly = plan.annual * 12;
-  return (
-    <div className="mt-8">
-      <div className="flex items-baseline gap-2">
-        <span
-          className={`font-semibold tracking-[-0.04em] text-white ${
-            large ? "text-7xl" : "text-6xl"
-          }`}
-        >
-          $<AnimatedPrice value={price} reduce={reduce} />
-        </span>
-        <span className="text-base text-zinc-400">per month</span>
-      </div>
-      <p className="mt-3 h-5 text-sm text-zinc-400">
-        {annual ? `Billed $${yearly} per year` : "Billed monthly, cancel any time"}
-      </p>
-    </div>
-  );
-}
+const PLANS = {
+  starter: {
+    name: "Licencia Estándar",
+    blurb: "Para proyectos personales o pruebas locales.",
+    monthly: 990,
+    annual: 990,
+    cta: "Próximamente",
+    features: [
+      "1 solo proyecto",
+      "Componentes básicos",
+      "Soporte de la comunidad",
+    ],
+  },
+  scale: {
+    name: "FluidReact-Core",
+    blurb: "Librería completa de componentes para producción.",
+    monthly: 1990,
+    annual: 1990,
+    cta: "Comprar ahora",
+    features: [
+      "Proyectos ilimitados",
+      "Todos los componentes UI",
+      "Código fuente en React/Next.js",
+      "Actualizaciones de por vida",
+      "Integración fácil con Tailwind",
+    ],
+  },
+};
+
+const BILLING = [
+  { annual: true, label: "Pago Único", note: "Acceso de por vida" },
+];
 
 export default function PricingSection() {
   const [annual, setAnnual] = useState(true);
@@ -228,13 +235,13 @@ export default function PricingSection() {
             variants={item}
             className="text-balance bg-gradient-to-b from-white to-white/60 bg-clip-text pb-[0.12em] text-[2.5rem] font-semibold leading-[0.95] tracking-[-0.04em] text-transparent sm:text-6xl md:text-7xl lg:text-8xl"
           >
-            Simple pricing for complex AI.
+            Invierte en código. Ahorra semanas de desarrollo.
           </motion.h2>
           <motion.p
             variants={item}
             className="mx-auto mt-8 max-w-xl text-lg leading-8 text-zinc-300"
           >
-            Pay for the compute you use. Switch plans or cancel whenever you like.
+            Adquiere la librería y obtén acceso instantáneo a todo el código fuente.
           </motion.p>
         </div>
 
@@ -291,7 +298,10 @@ export default function PricingSection() {
               <p className="mt-2 text-[15px] leading-6 text-zinc-300">{scale.blurb}</p>
               <PlanPrice plan={scale} annual={annual} reduce={reduce} large />
               <motion.a
-                href="#signup"
+                  href="https://mpago.la/12GvrKZ"
+  target="_blank"
+  rel="noopener noreferrer"
+
                 whileHover={reduce ? undefined : { scale: 1.02 }}
                 whileTap={reduce ? undefined : { scale: 0.98 }}
                 transition={{ duration: 0.18, ease: EASE }}
